@@ -31,6 +31,7 @@ This project is a Flask-based API that classifies a given number based on variou
 }
 
 400 Bad Response
+
 ```json
 {
     "number": "alphabet",
