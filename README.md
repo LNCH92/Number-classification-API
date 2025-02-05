@@ -1,6 +1,7 @@
 # Number Classification API
 
-This project is a Flask-based API that classifies a given number based on various properties such as whether it is prime, perfect, Armstrong, odd, or even. It also provides a fun fact about the number if it is an Armstrong number.
+This project is a Flask-based API that classifies a given number based on various properties such as whether it is prime, perfect, Armstrong, odd, or even. It also provides a fun fact about the number if it is an Armstrong number. Accepts GET requests with a number parameter, returns JSON in the specified format, handles edge cases gracefully (non-numeric inputs, negative numbers, numbers with multiple properties), and provides appropriate HTTP status codes.
+
 
 ## Features
 
@@ -42,13 +43,13 @@ This project is a Flask-based API that classifies a given number based on variou
 ## Setup
 ### 1. Clone the repository
 ```markdown
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/LNCH92/Number-classification-API.git
 cd your-repository
 ```
 ### 2. Create a virtual environment and activate it:
 ```markdown
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+python -m venv .venv
+source .venv\Scripts\activate
 ```
 
 ### 3. Install the required packages:
@@ -61,11 +62,21 @@ pip install -r requirements.txt
 python classify-api.py
 ```
 
-### 5. Open your browser and navigate to http://127.0.0.1:5000/api/classify-number?number=371 to test the endpoint.
-
+### 5. Open your browser and navigate to the link below to test the endpoint.
+``` markdown
+http://127.0.0.1:5000/api/classify-number?number=371
+```
 
 ## Dependencies
+<<<<<<< HEAD
 1. Flask
 2. Flask-Marshmallow
 
 ## MIT License 
+=======
+ 1. Flask
+ 2. Flask-Marshmallow
+
+## MIT License
+
+>>>>>>> 996b1707fb2aaad222015143cca96239563f2f96
