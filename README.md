@@ -30,8 +30,7 @@ This project is a Flask-based API that classifies a given number based on variou
     "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
 }
 
-400 Bad Request
-
+400 Bad Response
 ```json
 {
     "number": "alphabet",
