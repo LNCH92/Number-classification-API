@@ -41,6 +41,7 @@ This project is a Flask-based API that classifies a given number based on variou
 ```
 
 ## Setup
+
 ### 1. Clone the repository
 ```markdown
 git clone https://github.com/LNCH92/Number-classification-API.git
@@ -51,7 +52,6 @@ cd your-repository
 python -m venv .venv
 source .venv\Scripts\activate
 ```
-
 ### 3. Install the required packages:
 ```markdown
 pip install -r requirements.txt
@@ -61,22 +61,51 @@ pip install -r requirements.txt
 ```markdown
 python classify-api.py
 ```
-
 ### 5. Open your browser and navigate to the link below to test the endpoint.
 ``` markdown
 http://127.0.0.1:5000/api/classify-number?number=371
 ```
+## Deployment to AWS Elastic Compute Cloud (EC2)
+### 1. SSH to a runnung instance on AWS
+```markdown
+ssh -i your-key.pem ubuntu@ec2-public-IPV4-DNS.amazonaws.com
+```
+### 2. Update and install dependencies
+```markdown
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip -y
+```
+### 3. Create and activate a virtual environment
+```markdown
+python3 -m venv myenv
+source myenv/bin/activate
+```
+### 4. Install Flask and gunicorn
+```markdown
+pip install Flask
+pip install gunicorn
+```
+### 5. Clone the git repository
+```markdown
+git clone https://github.com/LNCH92/Number-classification-API.git
+```
+### 6. Run your API using gunicorn on port 5000
+```markdown
+gunicorn --bind 0.0.0.0:5000 classify-api:app
+```
+### 7. Create an inbound rule allowing *custom TCP* on *port 5000*
+Enter AWS server > Security group > inbound rule > edit rules > save rules
+### 8. Open web browser and navigate to this link
+```markdown
+http://ec2-user-public-IP-address:5000/api/classify-number?number=371
+```
+Enter your AWS EC2 public-IP address where applicable.
 
 ## Dependencies
-<<<<<<< HEAD
 1. Flask
 2. Flask-Marshmallow
 
 ## MIT License 
-=======
- 1. Flask
- 2. Flask-Marshmallow
 
-## MIT License
 
->>>>>>> 996b1707fb2aaad222015143cca96239563f2f96
+
