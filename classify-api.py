@@ -35,7 +35,7 @@ def classify_number():
         return jsonify({"number": number_str, "error": True}), 400
 
     properties = []
-    if is_armstrong(int(number)):
+    if is_armstrong(int(abs(number))):  # Use absolute value for Armstrong check
         properties.append("armstrong")
     if number % 2 != 0:
         properties.append("odd")
@@ -49,7 +49,7 @@ def classify_number():
         "is_prime": is_prime(int(number)),
         "is_perfect": is_perfect(int(number)),
         "properties": properties,
-        "class_sum": sum(int(digit) for digit in str(int(number))),
+        "class_sum": sum(int(digit) for digit in str(int(abs(number)))),  # Use absolute value for class sum
         "fun_fact": fun_fact
     }
     return jsonify(response), 200
