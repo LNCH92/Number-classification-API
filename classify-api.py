@@ -1,25 +1,44 @@
 from flask import Flask, request, jsonify
 import math
 import requests
+from functools import lru_cache
 
 app = Flask(__name__)
 
+@lru_cache(maxsize=128)
 def is_prime(n):
     if n <= 1:
         return False
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if n % i == 0:
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
             return False
+        i += 6
     return True
 
+@lru_cache(maxsize=128)
 def is_perfect(n):
-    return n == sum(i for i in range(1, n) if n % i == 0)
+    if n < 2:
+        return False
+    sum_divisors = 1
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            sum_divisors += i
+            if i != n // i:
+                sum_divisors += n // i
+    return sum_divisors == n
 
+@lru_cache(maxsize=128)
 def is_armstrong(n):
     num_str = str(n)
     num_len = len(num_str)
     return n == sum(int(digit) ** num_len for digit in num_str)
 
+@lru_cache(maxsize=128)
 def get_fun_fact(number):
     response = requests.get(f'http://numbersapi.com/{number}')
     if response.status_code == 200:
